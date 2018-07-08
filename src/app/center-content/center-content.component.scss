@@ -1,0 +1,236 @@
+@import '~assets/scss/vars.scss';
+@import '~assets/scss/mixins.scss';
+
+.center-content-container {
+  height: 100%;
+  .search-div {
+    background: #fff;
+    @include border-radius(4px, 4px, 4px, 4px);
+    padding: 25px 20px;
+    position: relative;
+    box-shadow: rgba(black, 0.1) 1px 1px 20px 5px;
+    input {
+      border: 0;
+      width: 80%;
+      border-bottom: 1px solid $color-theme-greyish;
+      padding-bottom: 10px;
+      font-size: 16px;
+      color: rgba($color-grey-text, 0.3);
+      outline: none;
+      &::placeholder {
+        font-size: 16px;
+        color: rgba($color-grey-text, 0.3);
+      }
+
+    }
+    .fas {
+      position: absolute;
+      right: calc(20% + 10px);
+      color: rgba($color-grey-text, 0.3);
+      font-weight: 600;
+      bottom: 35px;
+      font-size: 18px;
+    }
+    .search-container-div {
+      position: absolute;
+      left: 20px;
+      max-height: 400px;
+      overflow-y: scroll;
+      border-radius: 4px 4px 4px 4px;
+      width: calc(80% - 50px);
+      background: #fff;
+      top: calc(100% - 20px);
+      padding: 15px 5px 10px;
+      box-shadow: rgba(black, 0.1) 1px 1px 20px 5px;
+      @include border-radius(4px, 4px, 4px, 4px);
+      z-index: 1;
+      .search-item {
+        height: 50px;
+        position: relative;
+        cursor: pointer;
+        padding: 15px 10px 15px 40px;
+        .fas {
+          position: absolute;
+          top: 15px;
+          left: 10px;
+          font-size: 15px;
+        }
+        .name {
+          padding-bottom: 10px;
+          color: #000;
+          font-weight: 400;
+          font-size: 16px;
+        }
+        .phone-user-type {
+          @include flex($justify: space-between);
+          color: rgba($color-grey-text, 0.5);
+          font-size: 14px;;
+        }
+        &:hover {
+          background: #f8f8f8;
+          border-radius: 4px;
+        }
+      }
+    }
+    .selecteduserdetails {
+      .selectusername {
+        font-size: 22px;
+      }
+      .phone {
+        font-size: 16px;
+      }
+      .fas {
+        font-size: 30px;
+        color: rgba($color-grey-text, 0.5);
+        position: absolute;
+        right: 30px;
+        top: calc( 50% - 15px);
+        cursor: pointer;
+      }
+    }
+  }
+  .plan-div {
+    background: #fff;
+    @include border-radius(4px, 4px, 4px, 4px);
+    padding: 25px 20px;
+    position: relative;
+    margin-top: 30px;
+    box-shadow: rgba(black, 0.1) 1px 1px 20px 5px;
+    .plan-title-heading {
+      text-transform: uppercase;
+      font-size: 18px;
+      color: rgba($color-grey-text, 0.5);
+    }
+
+    .plan-div-details-container {
+      background: rgba($color-grey-background, 0.8);
+      margin-top: 20px;
+      .plan-title-row {
+        @include flex($justify: space-between);
+        border-bottom: 1px solid $color-blackish;
+        background: #fff;
+        .plan-title-card {
+          width: 22%;
+          @include flex();
+          background: rgba($color-grey-background, 0.8);
+          @include border-radius(4px, 4px, 0, 0);
+          padding: 15px 5px;
+          cursor: pointer;
+          &.active {
+            background: #fff;
+          }
+        }
+      }
+      .selected-plan-detail {
+        background: rgba($color-grey-background, 0.8);
+        padding: 10px;
+        @include flex($align: flex-start);
+        .plan-name-column {
+          @include flex($justify: flex-start, $align: unset, $direction: column);
+          width: 25%;
+          padding-right: 10px;
+          .plan-title {
+            font-size: 16px;
+            padding: 15px 20px;
+            text-transform: unset;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            &.active {
+              border: 1px solid $color-yellowish;
+              background: #fff;
+            }
+          }
+        }
+
+        .plan-months-column {
+          width: 75%;
+          background: #fff;
+          padding: 20px;
+          border-radius: 4px;
+          .month-list {
+            @include flex($justify: space-between);
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            &.active {
+              background: rgba($color-turquoise-blue, 0.4);
+              border: 1px solid $color-turquoise-blue;
+            }
+            &:hover {
+              border: 1px solid $color-turquoise-blue;
+              border-radius: 4px;
+            }
+          }
+        }
+      }
+    }
+
+    .start-date {
+      text-transform: uppercase;
+      font-size: 15px;
+      color: rgba($color-grey-text, 0.5);
+      padding: 15px 20px;
+      border-top: 1px solid $color-light-grey;
+      border-bottom: 1px solid $color-light-grey;
+      margin: 15px -20px;
+      .date {
+        text-transform: unset;
+        color: #000;
+        margin-top: 5px;
+      }
+    }
+    .offers {
+      text-transform: uppercase;
+      font-size: 15px;
+      color: rgba($color-grey-text, 0.5);
+      padding: 15px 20px;
+      margin: 15px -20px;
+      cursor: pointer;
+      position: relative;
+      .value {
+        text-transform: unset;
+        color: #000;
+        margin-top: 5px;
+        width: 40%;
+        border-bottom: 1px solid rgba($color-theme-light-blue, 0.5);
+        position: relative;
+        padding-bottom: 5px;
+        cursor: pointer;
+        .fas {
+          color: rgba($color-theme-light-blue, 0.5);
+          position: absolute;
+          right: 0;
+          bottom: 10px;
+        }
+      }
+      .offer-list-div {
+        position: absolute;
+        top: calc(-100% - 30px);
+        @include border-radius(4px, 4px, 4px, 4px);
+        padding: 5px;
+        background: #fff;
+        left: 15px;
+        width: 60%;
+        box-shadow: rgba(black, 0.1) 1px 1px 20px 5px;
+        .offer {
+          background: #fff;
+          margin-bottom: 10px;
+          padding: 10px;
+          .name {
+            color: $color-blackish;
+            font-size: 16px;
+            margin-bottom: 5px;
+          }
+          .description {
+            color: rgba($color-blackish, 0.5);
+            font-size: 12px;
+          }
+          &:hover {
+            background: $color-grey-background;
+          }
+        }
+      }
+    }
+  }
+}

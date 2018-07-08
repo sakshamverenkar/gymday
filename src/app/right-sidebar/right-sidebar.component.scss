@@ -1,0 +1,165 @@
+@import '~assets/scss/vars.scss';
+@import '~assets/scss/mixins.scss';
+
+.rightbar-sidebar-component {
+  height: calc(100% - 50px);
+  background: $color-light-black;
+  padding: 25px 0;
+  box-shadow: rgba(black, 0.1) 1px 1px 20px 5px;
+  border-radius: 4px;
+  position: relative;
+  .heading-row {
+    @include flex($justify: space-between);
+    padding:  0 25px 5px;
+    border-bottom: 1px solid rgba(#fff, 0.7);
+    .text {
+      color: rgba(#fff, 0.7);
+      font-size: 15px;
+    }
+  }
+  .plan-listing {
+    color: rgba(#fff, 0.7);
+    max-height: 280px;
+    overflow: scroll;
+    padding: 0 25px;
+    .item-list {
+      padding: 15px 0;
+      font-size: 15px;
+      .price-title-row {
+        @include flex($justify: space-between);
+        position: relative;
+        .title-name-div {
+          position: relative;
+          @include flex($justify: flex-start);
+          .title {
+            color: #fff;
+            margin-right: 8px;
+          }
+        }
+        .fas {
+          position: absolute;
+          right: -15px;
+          top: 1px;
+          cursor: pointer;
+        }
+      }
+
+
+      .month {
+        padding-top: 5px;
+      }
+      .offer-div {
+        @include flex($justify: space-between);
+        position: relative;
+        margin-top: 15px;
+        .offer-text {
+          background: $color-yellowish;
+          clip-path: polygon(0 0, 100% 0%, 90% 100%, 0% 100%);
+          -webkit-clip-path: polygon(0 0, 100% 0%, 90% 100%, 0% 100%);
+          padding: 8px 25px;
+          position: relative;
+          left: -35px;
+
+          font-weight: 500;
+          @include flex();
+          div.text {
+            color: rgba(#fff, 0.7);
+            padding-right: 5px;
+            font-weight: 300;
+            text-transform: unset;
+          }
+          div.value {
+            text-transform: uppercase;
+            color: $color-blackish;
+          }
+
+        }
+        .fas {
+          position: absolute;
+          right: -15px;
+          top: unset;
+          cursor: pointer;
+        }
+      }
+
+    }
+  }
+  .price-div {
+    padding: 0 25px;
+    @include flex($justify: flex-start, $align: unset, $direction: column);
+    color: rgba(#fff, 0.7);
+    font-weight: 400;
+    position: absolute;
+    width: calc(100% - 50px);
+    bottom: 25px;
+
+    .subtotal {
+      color: #fff;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(#fff, 0.7);
+      @include flex($justify: space-between);
+    }
+    .service-tax {
+      padding:  10px 0;
+      @include flex($justify: space-between);
+    }
+    .security-deposit {
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(#fff, 0.7);
+      @include flex($justify: space-between);
+    }
+    .total-amt {
+      padding: 20px 0;
+      .amt {
+        font-size: 30px;
+        color: $color-yellowish
+      }
+      .text {
+        margin-top: 5px;
+        color: rgba(#fff, 0.7);
+      }
+    }
+    .button-div {
+      margin-top: 20px;
+      button {
+        outline: none;
+        border: 0;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        color: #fff;
+        font-weight: 400;
+        padding: 14px 20px;
+        text-transform: uppercase;
+
+      }
+      &.payment-recieved-false {
+        @include flex($direction: column);
+        text-transform: uppercase;
+        color: #fff;
+        .payment-received {
+          background: $color-yellowish;
+          width: 100%;
+        }
+        .send-link {
+          margin-top: 15px;
+          background: $color-turquoise-blue;
+          width: 100%;
+        }
+      }
+      &.payment-recieved-true {
+        @include flex();
+        .cancel {
+          background: rgba(#e8e8e8, 0.5);
+          @include border-radius(4px , 0 , 0, 4px);
+        }
+        .yes {
+          background: #3cda3c;
+          @include border-radius(0 , 4px , 4px, 0);
+        }
+      }
+    }
+
+  }
+
+}

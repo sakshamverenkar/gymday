@@ -1,0 +1,103 @@
+<div class="rightbar-sidebar-component">
+
+  <div class="heading-row">
+    <div class="text">
+      Plan
+    </div>
+    <div class="text">
+      Price
+    </div>
+  </div>
+  <div class="plan-listing" *ngIf="checkoutObj && checkoutObj.user ">
+
+    <div *ngFor="let item of generateArray(checkoutObj.plan)"
+         class="item-list">
+      <div class="price-title-row" *ngIf="item.value">
+        <div class="title-name-div">
+          <div class="title">
+            {{item.value.title}}
+          </div>
+          <div class="name">
+            {{item.value.plan}}
+          </div>
+        </div>
+        <div class="price">
+          {{item.value.price}}
+        </div>
+        <i class="fas fa-times" (click)="clearPlan(item, $event)"></i>
+      </div>
+      <div class="month">
+        {{item.value.month}}
+      </div>
+
+      <div class="offer-div" *ngIf="item.value.offer">
+        <div class="offer-text">
+         <div class="text"> Offer - </div>
+          <div class="value" >
+            {{ (item.value.offer.planname.length>9) ? (item.value.offer.planname | slice:0:9) + '...' : item.value.offer.planname }}
+          </div>
+        </div>
+        <div class="offer-amt">
+          {{(item.value.offer.discount/100 * item.value.price )}}
+        </div>
+        <i class="fas fa-times" (click)="clearOffer(item, $event)"></i>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="price-div" *ngIf="totalPrice > 0">
+    <div class="subtotal">
+      <div class="text">
+        Sub Total
+      </div>
+      <div class="value">
+        {{totalPrice}}
+      </div>
+    </div>
+    <div class="service-tax">
+      <div class="text">
+        Service Tax
+      </div>
+      <div class="value">
+        {{totalPrice * (serviceTax/100) }}
+      </div>
+    </div>
+    <div class="security-deposit">
+      <div class="text">
+        Security Deposit
+      </div>
+      <div class="value">
+        {{securityDeposit }}
+      </div>
+    </div>
+
+
+    <div class="total-amt">
+     <div class="amt">
+       Rs  {{totalPrice + (totalPrice * (serviceTax/100)) + securityDeposit }}
+     </div>
+      <div class="text">
+        Total amount payable
+      </div>
+    </div>
+
+    <div class="button-div payment-recieved-false" *ngIf="!paymentRecieved">
+      <button class="payment-received" (click)="changePaymentRecieved()">
+        Payment Received
+      </button>
+      <button class="send-link">
+       Send Payment Link
+      </button>
+    </div>
+   <div class="button-div payment-recieved-true" *ngIf="paymentRecieved">
+      <button class="cancel" (click)="paymentRecieved = false">
+        Cancel
+      </button>
+      <button class="yes" (click)="paymentRecievedSuccess()">
+        Yes,Recieved
+      </button>
+    </div>
+  </div>
+</div>

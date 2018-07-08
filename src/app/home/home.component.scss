@@ -1,0 +1,52 @@
+@import '~assets/scss/vars.scss';
+@import '~assets/scss/mixins.scss';
+
+.home-container {
+  height: 100%;
+  .content-container {
+    min-height: 100%;
+    @include flex($justify: flex-start, $align: flex-start);
+    .left-sidebar {
+      width: 20%;
+      min-height: 100%;
+    }
+    .data-container {
+      min-height: 100%;
+      background: $color-grey-background;
+      width: 80%;
+      padding: 80px 50px 30px;
+      position: relative;
+      @include flex($justify: space-between, $align: unset);
+      .heading-row {
+        width: calc(100% - 100px);
+        position: absolute;
+        top: 20px;
+        @include flex($justify: flex-start);
+        border-bottom: 1px solid rgba($color-grey-text, 0.5);
+        border-bottom-width: calc(100%  - 90px);
+        .text {
+          color: rgba($color-blackish, 0.5);
+          font-weight: 400;
+          margin-right: 40px;
+          padding-bottom: 10px;
+          min-width: 90px;
+          bottom: -2px;
+          position: relative;
+          cursor: pointer;
+          &.active {
+            font-weight: 600;
+            color: $color-blackish;
+            border-bottom: 3px solid $color-yellowish;
+          }
+        }
+      }
+
+      .center-content {
+        width: 65%;
+      }
+      .right-sidebar {
+        width: 30%;
+      }
+    }
+  }
+}

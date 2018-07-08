@@ -1,0 +1,112 @@
+<div class="center-content-container">
+
+  <div class="search-div">
+    <div *ngIf="!selectUserObj">
+      <input type="text" placeholder="Enter Customer Name or Phone no."
+             [(ngModel)]="searchText" (keyup)="searchUsers()"/>
+      <i class="fas fa-search"></i>
+    </div>
+    <div *ngIf="selectUserObj" class="selecteduserdetails">
+      <div class="selectusername">
+        {{selectUserObj.firstname | titlecase}} {{selectUserObj.lastname | titlecase }}
+      </div>
+      <div class="phone">
+        {{selectUserObj.phone}}
+      </div>
+      <i class="fas fa-times" (click)="clearUser()"></i>
+    </div>
+
+    <div class="search-container-div" *ngIf="filteredUsers && filteredUsers.length && (searchText.length >= 2) ">
+      <div class="search-item" *ngFor="let user of filteredUsers "
+           (click)="selectUser(user, $event)">
+        <i class="fas fa-circle" *ngIf="user.type === 'MEMBER'"
+           [ngStyle]="{color: getMemberColor(user.status)}">
+        </i>
+        <i class="fas fa-star" *ngIf="user.type === 'PROSPECT'"
+           [ngStyle]="{color: getProspectColor(user.status)}">
+        </i>
+        <div class="name">
+          {{user.firstname | titlecase}} {{user.lastname | titlecase}}
+        </div>
+        <div class="phone-user-type">
+          <div class="phone-number">
+            {{user.phone}}
+          </div>
+          <div class="usertype">
+            {{user.type}}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="plan-div">
+    <div class="plan-title-heading">
+      Plan
+    </div>
+
+    <div class="plan-div-details-container">
+      <div class="plan-title-row">
+        <div class="plan-title-card" *ngFor="let plan of plans"
+             [ngClass]="{active: plan.title === selectedPlanTitle}"
+             (click)="filterPlan(plan.title)">
+          {{plan.title}}
+        </div>
+      </div>
+      <div class="selected-plan-detail">
+        <div class="plan-name-column">
+          <div class="plan-title"
+               *ngFor="let plan of selectedPlan.planDetails"
+               (click)="filterPlanDetail(plan.name)"
+               [ngClass]="{active: currentPlansDetailTitle === plan.name}">
+            {{plan.name}}
+          </div>
+        </div>
+        <div class="plan-months-column">
+          <div class="month-list"
+               *ngFor="let monthdetail of currentPlansDetail.monthDetails"
+               (click)="selectPlan(currentPlansDetail, monthdetail)"
+               [ngClass]="{active: monthdetail.active }">
+            <div>
+              {{monthdetail.month}}
+            </div>
+            <div>
+              {{monthdetail.price}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="start-date">
+      Start Date
+      <div class="date">
+        18 October, 2016
+      </div>
+    </div>
+
+    <div class="offers">
+      Offers
+      <div class="value" (click)="toggleOffer($event)">
+        {{selectedOffer.planname}}
+        <i class="fas fa-sort-down"></i>
+      </div>
+      <div class="offer-list-div" *ngIf="showOffers">
+        <div class="offer" *ngFor="let offer of filteredOffers"
+             (click)="selectOffer(offer, $event)">
+         <div class="name">
+           {{offer.planname}}
+         </div>
+          <div class="description">
+            {{offer.description}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

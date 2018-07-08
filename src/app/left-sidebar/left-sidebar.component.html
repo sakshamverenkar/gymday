@@ -1,0 +1,33 @@
+<div class="left-sidebar-container">
+  <div class="top-heading">
+     <span class="text">
+       Fitness First
+     </span>
+    <span class="location"> Peddar Road <i class="fas fa-sort-down"></i></span>
+  </div>
+  <div class="list-content">
+    <div *ngFor="let item of data" class="list-content-item"
+         [ngClass]="{active: item.active}">
+
+      <div [innerHtml]="item.image" class="fas-div">
+      </div>
+
+      <div class="name">
+        {{item.name}}
+      </div>
+    </div>
+  </div>
+
+  <div class="location-div">
+    <div>
+      Fitness First<br>
+      201, Bhagwati Garden<br>
+      Link Road, Bandra, Mumbai<br>
+    </div>
+    <div>+91 9967881841</div>
+    contact@fitnessfirst.com
+  </div>
+  <div class="email">
+    support@gymday.in
+  </div>
+</div>

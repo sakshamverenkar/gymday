@@ -1,0 +1,36 @@
+<div class="header-div">
+  <div class="header-logo">
+    <img src="../../assets/images/logoText1.svg" class="logo-img" />
+  </div>
+  <div class="search-input">
+    <input type="text" placeholder="Search by Name, Phone No. or Email"
+           [(ngModel)]="searchText" (keyup)="searchUsers()"/>
+    <div class="search-container-div" *ngIf="filteredUsers && filteredUsers.length && (searchText.length >= 2) ">
+      <div class="search-item" *ngFor="let user of filteredUsers "
+           (click)="selectUser(user, $event)">
+        <i class="fas fa-circle" *ngIf="user.type === 'MEMBER'"
+           [ngStyle]="{color: getMemberColor(user.status)}">
+        </i>
+        <i class="fas fa-star" *ngIf="user.type === 'PROSPECT'"
+           [ngStyle]="{color: getProspectColor(user.status)}">
+        </i>
+        <div class="name">
+          {{user.firstname | titlecase}} {{user.lastname | titlecase}}
+        </div>
+        <div class="phone-user-type">
+          <div class="phone-number">
+            {{user.phone}}
+          </div>
+          <div class="usertype">
+            {{user.type}}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="right-div">
+    {{dateObj()}}
+    <i class="fas fa-user-circle"></i>
+  </div>
+</div>

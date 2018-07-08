@@ -1,16 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-
+import {ApiService} from '../services/api.service';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
+import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
+import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
+import { CenterContentComponent } from './center-content/center-content.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
-    AppComponent
+    HomeComponent,
+    HeaderComponent,
+    LeftSidebarComponent,
+    RightSidebarComponent,
+    CenterContentComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    ApiService
+  ],
+  bootstrap: [HomeComponent]
 })
 export class AppModule { }
