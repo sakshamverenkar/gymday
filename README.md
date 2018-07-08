@@ -1,3 +1,6 @@
+# Clone
+Clone the library from branch master. Change the directory to gumday  and run 'npm install' to install all the libraries from package.json
+
 # Gymday
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
@@ -26,3 +29,10 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## 3rd Party Libraries
+
+3rd party librariesused -
+ a. sweetalert  - for popup
+ b. Font Awesome -  for icons
